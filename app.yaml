@@ -1,0 +1,7 @@
+runtime: nodejs
+env: flex
+service: eureka-terminator
+env_variables:
+  EUREKA_ENV: dev
+beta_settings:
+  cloud_sql_instances: dotted-vim-164110:us-east1:eureka-dev
