@@ -8,6 +8,6 @@ module.exports = {
     database: 'eureka_local'
   },
   applicationInsights: {
-    iKey: '32b8b06f-ff4a-4b04-b26d-4d9c4796b92a'
+    iKey: '9a35a0fc-5967-4467-a59c-8a7b16d3eae3'
   }
 }

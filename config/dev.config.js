@@ -11,6 +11,6 @@ module.exports = {
     socketPath: `/cloudsql/${instanceName}`
   },
   applicationInsights: {
-    iKey: '20f0c386-44e4-4eea-97be-2644299652e5'
+    iKey: 'baf55979-59e5-4aa3-9f4f-7fcefa2ec6ec'
   }
 }
