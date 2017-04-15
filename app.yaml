@@ -5,3 +5,11 @@ env_variables:
   EUREKA_ENV: dev
 beta_settings:
   cloud_sql_instances: dotted-vim-164110:us-east1:eureka-dev
+instance_class: B1
+
+# Disable auto-scale
+manual_scaling:
+  instances: 1
+# Disable health checks
+health_check:
+  enable_health_check: False
