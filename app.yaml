@@ -1,6 +1,6 @@
 runtime: nodejs
 env: flex
-service: eureka-terminator
+service: eureka-stalker
 env_variables:
   EUREKA_ENV: dev
 beta_settings:

@@ -1,10 +1,10 @@
 {
-  "name": "eureka-terminator",
+  "name": "eureka-stalker",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node terminator.js",
+    "start": "node stalker.js",
     "test": "mocha test/**/*.js --reporter spec",
     "lint": "eslint **/*.js --fix"
   },
