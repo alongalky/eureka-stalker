@@ -4,7 +4,8 @@ const aiLogger = require('winston-azure-application-insights').AzureApplicationI
 const fs = require('fs')
 const config = require('./config/config')(fs, require)
 const { getInitializingTasks } = require('./database/tasks')
-const stuckInInitJob = require('./jobs/stuck-init')({ getInitializingTasks })
+const alert = require('./alert/alert')
+const stuckInInitJob = require('./jobs/stuck-init')({ getInitializingTasks, alert })
 
 // Set up logging through winston
 winston.configure({
