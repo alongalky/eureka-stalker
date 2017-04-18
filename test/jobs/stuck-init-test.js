@@ -1,5 +1,6 @@
 const sinon = require('sinon')
-const expect = require('chai').expect
+const sinonStubPromise = require('sinon-stub-promise')
+sinonStubPromise(sinon)
 const moment = require('moment')
 
 describe('Jobs', () => {
@@ -13,7 +14,7 @@ describe('Jobs', () => {
     })
 
     it('No alerts on happy flow, no tasks', done => {
-      getInitializingTasks.returns(Promise.resolve([]))
+      getInitializingTasks.resolves([])
       stuckInInitJob()
         .then(() => {
           sinon.assert.notCalled(alert)
@@ -24,8 +25,8 @@ describe('Jobs', () => {
       const tasks = [
         { timestamp_initializing: moment().subtract(5, 'minutes').toDate() }
       ]
+      getInitializingTasks.resolves(tasks)
 
-      getInitializingTasks.returns(Promise.resolve(tasks))
       stuckInInitJob()
         .then(() => {
           sinon.assert.notCalled(alert)
@@ -36,8 +37,8 @@ describe('Jobs', () => {
       const tasks = [
         { timestamp_initializing: moment().subtract(50, 'minutes').toDate() }
       ]
+      getInitializingTasks.resolves(tasks)
 
-      getInitializingTasks.returns(Promise.resolve(tasks))
       stuckInInitJob()
         .then(() => {
           sinon.assert.calledOnce(alert)
