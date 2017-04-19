@@ -3,7 +3,7 @@ const database = require('./database')
 module.exports = {
   getInitializingTasks: () => {
     const query =
-      'SELECT tasks.task_id, tasks.status, tasks.timestamp_start ' +
+      'SELECT tasks.task_id, tasks.status, tasks.timestamp_initializing ' +
       'FROM tasks ' +
       'WHERE tasks.status = ?'
 

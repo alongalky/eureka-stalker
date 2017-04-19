@@ -1,4 +1,4 @@
-const winston = require('winston')
+const logger = require('../logger/logger')()
 const moment = require('moment')
 
 const graceTimeInMinutes = 5
@@ -7,6 +7,7 @@ const maximumLegalDurationInMinutes = 20
 module.exports = ({ getInitializingTasks, alert }) => () =>
   getInitializingTasks()
     .then(tasks => {
+      logger.info(`Found ${tasks.length} tasks in Initializing state.`)
       const oldEnoughFilter = task => moment().diff(task.timestamp_initializing, 'seconds') > graceTimeInMinutes * 60
       const addDurationMap = task => {
         const start = moment(task.timestamp_initializing)
@@ -25,5 +26,5 @@ module.exports = ({ getInitializingTasks, alert }) => () =>
         alert(new Error(message))
       }
     }).catch(err => {
-      winston.error(err.toString())
+      logger.error(err.toString())
     })

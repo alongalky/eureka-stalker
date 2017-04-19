@@ -1,3 +1,5 @@
+const logger = require('../../logger/logger')
+logger.silence = true
 const sinon = require('sinon')
 const sinonStubPromise = require('sinon-stub-promise')
 sinonStubPromise(sinon)
@@ -43,7 +45,7 @@ describe('Jobs', () => {
         .then(() => {
           sinon.assert.calledOnce(alert)
           done()
-        }).catch(err => console.error(err))
+        })
     })
   })
 })
