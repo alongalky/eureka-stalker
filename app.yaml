@@ -9,7 +9,7 @@ beta_settings:
 # Instance resources size
 resources:
   cpu: 1
-  memory_gb: 2
+  memory_gb: 1
   disk_size_gb: 10
 # Disable auto-scale
 manual_scaling:
