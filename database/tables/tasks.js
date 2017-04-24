@@ -5,9 +5,9 @@ module.exports = {
     const query =
       'SELECT tasks.task_id, tasks.status, tasks.timestamp_initializing ' +
       'FROM tasks ' +
-      'WHERE tasks.status = ?'
+      'WHERE tasks.status = "Initializing"'
 
-    return connection().query(query, ['Initializing'])
+    return connection().query(query)
       .then(([rows, fields]) => rows)
   },
   getUnfinishedTasks: () => {
@@ -16,7 +16,7 @@ module.exports = {
       'FROM tasks ' +
       'WHERE tasks.status <> "Done" AND tasks.status <> "Error"'
 
-    return connection().query(query, ['Initializing'])
+    return connection().query(query)
       .then(([rows, fields]) => rows)
   }
 }

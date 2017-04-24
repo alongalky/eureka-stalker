@@ -1,7 +1,6 @@
 const logger = require('../../logger/logger')()
 
-// module.exports = ({ config, gce }) => ({
-module.exports = ({ config, gce }) => ({
+module.exports = ({ gce }) => ({
   controls: 'google',
   getTaskIds: () => {
     return gce.getVMs().then(([vms]) => {

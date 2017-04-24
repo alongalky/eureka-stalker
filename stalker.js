@@ -19,7 +19,7 @@ const database = require('./database/database')
 const alert = require('./alert/alert')
 
 const gce = require('@google-cloud/compute')()
-const googleController = require('./cloud/google/controller')({ config, gce })
+const googleController = require('./cloud/google/controller')({ gce })
 const controller = [googleController].find(c => c.controls === config.cloud_provider)
 if (!controller) {
   throw new Error(`Could not find a cloud controller to handle ${config.cloud_provider}`)

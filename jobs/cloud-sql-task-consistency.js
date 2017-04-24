@@ -32,6 +32,7 @@ module.exports = ({ database, cloud, alert }) => () => {
             }
             break
           default:
+            // This should never happen, as we're only querying for 'Initializing' and 'Running' tasks
         }
       }
       logger.info(`Finished consistency checks.`)
