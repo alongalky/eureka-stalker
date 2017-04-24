@@ -8,15 +8,19 @@ const moment = require('moment')
 describe('Jobs', () => {
   describe('stuck-init', () => {
     const alert = sinon.stub()
-    const getInitializingTasks = sinon.stub()
-    const stuckInInitJob = require('../../jobs/stuck-init')({ getInitializingTasks, alert })
+    const database = {
+      tasks: {
+        getInitializingTasks: sinon.stub()
+      }
+    }
+    const stuckInInitJob = require('../../jobs/stuck-init')({ database, alert })
 
     beforeEach(() => {
       alert.reset()
     })
 
     it('No alerts on happy flow, no tasks', done => {
-      getInitializingTasks.resolves([])
+      database.tasks.getInitializingTasks.resolves([])
       stuckInInitJob()
         .then(() => {
           sinon.assert.notCalled(alert)
@@ -27,7 +31,7 @@ describe('Jobs', () => {
       const tasks = [
         { timestamp_initializing: moment().subtract(5, 'minutes').toDate() }
       ]
-      getInitializingTasks.resolves(tasks)
+      database.tasks.getInitializingTasks.resolves(tasks)
 
       stuckInInitJob()
         .then(() => {
@@ -39,7 +43,7 @@ describe('Jobs', () => {
       const tasks = [
         { timestamp_initializing: moment().subtract(50, 'minutes').toDate() }
       ]
-      getInitializingTasks.resolves(tasks)
+      database.tasks.getInitializingTasks.resolves(tasks)
 
       stuckInInitJob()
         .then(() => {
