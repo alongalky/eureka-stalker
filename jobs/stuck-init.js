@@ -4,8 +4,8 @@ const moment = require('moment')
 const graceTimeInMinutes = 5
 const maximumLegalDurationInMinutes = 20
 
-module.exports = ({ getInitializingTasks, alert }) => () =>
-  getInitializingTasks()
+module.exports = ({ database, alert }) => () =>
+  database.tasks.getInitializingTasks()
     .then(tasks => {
       logger.info(`Found ${tasks.length} tasks in Initializing state.`)
       const oldEnoughFilter = task => moment().diff(task.timestamp_initializing, 'seconds') > graceTimeInMinutes * 60
