@@ -1,0 +1,19 @@
+runtime: nodejs
+env: flex
+service: eureka-stalker
+env_variables:
+  EUREKA_ENV: beta
+beta_settings:
+  cloud_sql_instances: eureka-beta:us-east1:eureka-beta-sql
+
+# Instance resources size
+resources:
+  cpu: 1
+  memory_gb: 1
+  disk_size_gb: 10
+# Disable auto-scale
+manual_scaling:
+  instances: 1
+# Disable health checks
+health_check:
+  enable_health_check: False
