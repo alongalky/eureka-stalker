@@ -17,7 +17,7 @@ describe('Cloud-SQL task consistency', () => {
   }
   const alert = sinon.stub()
   const consistencyCheck = require('../../jobs/cloud-sql-task-consistency')({ database, cloud, alert })
-  const [ InitializingStatus, RunningStatus ] = ['Initializing', 'Running', 'Error', 'Done']
+  const [ InitializingStatus, RunningStatus ] = ['Initializing', 'Running']
 
   beforeEach(() => {
     database.tasks.getUnfinishedTasks.reset()
